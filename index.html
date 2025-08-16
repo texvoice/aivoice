@@ -32,6 +32,16 @@
             padding: 1rem;
         }
     </style>
+    <!-- Google Analytics code -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2GSKL41QLH"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-2GSKL41QLH');
+    </script>
 </head>
 <body class="bg-gray-100 min-h-screen">
 
@@ -376,6 +386,53 @@
                 <p>आप अपने ब्राउज़र की सेटिंग में कुकीज़ को अक्षम (disable) कर सकते हैं। ऐसा करने से वेबसाइट के कुछ हिस्से ठीक से काम नहीं कर सकते हैं।</p>
             </div>
         </section>
+
+        <!-- FAQ Section -->
+        <section id="faq-page" class="page-section bg-white p-8 rounded-xl shadow-lg w-full max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">अक्सर पूछे जाने वाले प्रश्न (FAQ)</h2>
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="border border-gray-200 rounded-lg p-4">
+                    <div class="flex justify-between items-center faq-question">
+                        <h3 class="font-semibold text-gray-800">AI-Voice.in क्या है?</h3>
+                        <svg class="w-6 h-6 transform transition-transform duration-300 rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="faq-answer mt-2">
+                        <p class="text-gray-600">AI-Voice.in एक अत्याधुनिक (cutting-edge) AI वॉइस जनरेटर है जो आपके लिखे हुए टेक्स्ट को प्राकृतिक और जीवंत आवाज़ में बदलता है। आप इसे वीडियो, पॉडकास्ट, ऑडियोबुक्स, और अन्य परियोजनाओं के लिए इस्तेमाल कर सकते हैं।</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div class="border border-gray-200 rounded-lg p-4">
+                    <div class="flex justify-between items-center faq-question">
+                        <h3 class="font-semibold text-gray-800">क्या जनरेट की गई आवाज़ें असली लगती हैं?</h3>
+                        <svg class="w-6 h-6 transform transition-transform duration-300 rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="faq-answer mt-2">
+                        <p class="text-gray-600">हाँ, हमारी सेवा AI मॉडल्स का उपयोग करती है जो मानवीय आवाज़ों की बारीकियों को समझने और दोहराने के लिए प्रशिक्षित होते हैं। परिणाम स्वरूप, आवाज़ें अत्यंत यथार्थवादी और भावनात्मक रूप से समृद्ध होती हैं।</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div class="border border-gray-200 rounded-lg p-4">
+                    <div class="flex justify-between items-center faq-question">
+                        <h3 class="font-semibold text-gray-800">वॉइसओवर जनरेट करने में कितना समय लगता है?</h3>
+                        <svg class="w-6 h-6 transform transition-transform duration-300 rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="faq-answer mt-2">
+                        <p class="text-gray-600">अधिकांश वॉइसओवर कुछ ही सेकंड में जनरेट हो जाते हैं। समय आपके द्वारा दर्ज किए गए टेक्स्ट की लंबाई पर निर्भर करता है।</p>
+                    </div>
+                </div>
+                <!-- FAQ Item 4 -->
+                <div class="border border-gray-200 rounded-lg p-4">
+                    <div class="flex justify-between items-center faq-question">
+                        <h3 class="font-semibold text-gray-800">क्या मैं अपनी खुद की आवाज़ क्लोन कर सकता हूँ?</h3>
+                        <svg class="w-6 h-6 transform transition-transform duration-300 rotate-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                    <div class="faq-answer mt-2">
+                        <p class="text-gray-600">यह एक उन्नत सुविधा है जो जल्द ही हमारे "वॉइस लैब" में उपलब्ध होगी। इस सुविधा को सुरक्षित रूप से लागू करने के लिए हम वर्तमान में इस पर काम कर रहे हैं।</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- AdSense Ad Slot (Bottom) -->
@@ -438,8 +495,6 @@
         const downloadLink = document.getElementById('download-link');
         const addVoiceBtn = document.getElementById('add-voice-btn');
         const designVoiceBtn = document.getElementById('design-voice-btn');
-        const loginBtn = document.getElementById('login-btn');
-        const signupBtn = document.getElementById('signup-btn');
         const footerTermsBtn = document.getElementById('footer-terms-btn');
         const footerPrivacyBtn = document.getElementById('footer-privacy-btn');
         const headerLogo = document.getElementById('header-logo');
@@ -800,19 +855,6 @@
             displayMessage('यह एक एडवांस AI मॉडल फीचर है और इसके लिए एक अलग API की ज़रूरत होती है।', 'error');
         });
 
-        // Add event listeners for login/signup buttons
-        // Login and Signup buttons are now removed, so these listeners are no longer needed
-        // but keeping them here for reference if you decide to add them back with a real backend.
-        // loginBtn.addEventListener('click', (e) => {
-        //     e.preventDefault();
-        //     displayMessage('लॉगिन फीचर के लिए एक बैकएंड सिस्टम की ज़रूरत होती है। यह एक डेमो लिंक है।', 'info');
-        // });
-
-        // signupBtn.addEventListener('click', (e) => {
-        //     e.preventDefault();
-        //     displayMessage('साइन अप फीचर के लिए एक बैकएंड सिस्टम की ज़रूरत होती है। यह एक डेमो लिंक है।', 'info');
-        // });
-
         // FAQ accordion functionality
         document.querySelectorAll('.faq-question').forEach(question => {
             question.addEventListener('click', () => {
@@ -832,7 +874,7 @@
                 }
             });
         });
-
+        
     </script>
 </body>
 </html>

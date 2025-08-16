@@ -52,11 +52,7 @@
             <button id="nav-faq" class="text-white hover:text-blue-500 transition-colors hidden md:inline-block">FAQ</button>
             <button id="nav-about" class="text-white hover:text-blue-500 transition-colors hidden md:inline-block">हमारे बारे में</button>
         </nav>
-        <!-- Auth Buttons -->
-        <div class="space-x-4">
-            <a href="#" id="login-btn" class="text-white hover:text-blue-500 transition-colors hidden md:inline-block">लॉगिन (Login)</a>
-            <a href="#" id="signup-btn" class="bg-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-700 transition-colors shadow-md">साइन अप (Sign Up)</a>
-        </div>
+        <!-- Auth Buttons are now removed for a cleaner look -->
     </header>
 
     <!-- AdSense Ad Slot (Top) -->
@@ -805,15 +801,17 @@
         });
 
         // Add event listeners for login/signup buttons
-        loginBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            displayMessage('लॉगिन फीचर के लिए एक बैकएंड सिस्टम की ज़रूरत होती है। यह एक डेमो लिंक है।', 'info');
-        });
+        // Login and Signup buttons are now removed, so these listeners are no longer needed
+        // but keeping them here for reference if you decide to add them back with a real backend.
+        // loginBtn.addEventListener('click', (e) => {
+        //     e.preventDefault();
+        //     displayMessage('लॉगिन फीचर के लिए एक बैकएंड सिस्टम की ज़रूरत होती है। यह एक डेमो लिंक है।', 'info');
+        // });
 
-        signupBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            displayMessage('साइन अप फीचर के लिए एक बैकएंड सिस्टम की ज़रूरत होती है। यह एक डेमो लिंक है।', 'info');
-        });
+        // signupBtn.addEventListener('click', (e) => {
+        //     e.preventDefault();
+        //     displayMessage('साइन अप फीचर के लिए एक बैकएंड सिस्टम की ज़रूरत होती है। यह एक डेमो लिंक है।', 'info');
+        // });
 
         // FAQ accordion functionality
         document.querySelectorAll('.faq-question').forEach(question => {

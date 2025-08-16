@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Voice.in</title>
+    <!-- Tailwind CSS ko CDN se load karein -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Inter font ko import karein */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Hidden by default */
+        .page-section {
+            display: none;
+        }
+        /* FAQ accordion styles */
+        .faq-question {
+            cursor: pointer;
+            user-select: none;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            padding: 0 1rem;
+        }
+        .faq-answer.open {
+            max-height: 500px; /* Adjust as needed */
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+    <!-- Header Section (Landing Page & Studio) -->
+    <header class="bg-gray-900 text-gray-200 py-4 px-6 md:px-12 flex justify-between items-center shadow-lg">
+        <button id="header-logo" class="flex items-center space-x-2">
+            <!-- Logo -->
+            <svg class="h-8 w-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 013-3h.01a3 3 0 013 3v2a3 3 0 01-3 3z"></path>
+            </svg>
+            <span class="text-2xl font-bold text-gray-100">AI-Voice.in</span>
+        </button>
+        <!-- Navigation Links -->
+        <nav class="space-x-4">
+            <button id="nav-home" class="text-white hover:text-blue-500 transition-colors hidden md:inline-block">होम (Home)</button>
+            <button id="nav-studio" class="text-white hover:text-blue-500 transition-colors hidden md:inline-block">स्टूडियो (Studio)</button>
+            <button id="nav-blog" class="text-white hover:text-blue-500 transition-colors hidden md:inline-block">ब्लॉग (Blog)</button>
+            <button id="nav-faq" class="text-white hover:text-blue-500 transition-colors hidden md:inline-block">FAQ</button>
+            <button id="nav-about" class="text-white hover:text-blue-500 transition-colors hidden md:inline-block">हमारे बारे में</button>
+        </nav>
+        <!-- Auth Buttons -->
+        <div class="space-x-4">
+            <a href="#" id="login-btn" class="text-white hover:text-blue-500 transition-colors hidden md:inline-block">लॉगिन (Login)</a>
+            <a href="#" id="signup-btn" class="bg-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-700 transition-colors shadow-md">साइन अप (Sign Up)</a>
+        </div>
+    </header>
+
+    <!-- AdSense Ad Slot (Top) -->
+    <!-- Adsense approval ke baad, aap is div ke andar ad code paste kar sakte hain. -->
+    <div class="w-full bg-white p-4 text-center text-gray-500 text-sm border-b border-gray-200" style="min-height: 80px;">
+        <p>विज्ञापन (Advertisement)</p>
+        <!-- AdSense Ad Code here -->
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto p-4">
+
+        <!-- Landing Page Section -->
+        <section id="landing-page" class="page-section">
+            <div class="container mx-auto px-4 py-16 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 leading-tight mb-4">
+                    AI के साथ अपनी स्क्रिप्ट को आवाज दें।
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                    दुनिया की सबसे उन्नत AI आवाजों के साथ अपनी कहानी को जीवंत करें। मिनटों में पेशेवर वॉइसओवर बनाएं।
+                </p>
+                <button id="get-started-btn" class="bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 transition-colors shadow-xl">
+                    शुरू करें (Get Started)
+                </button>
+            </div>
+
+            <!-- Features Section -->
+            <div class="container mx-auto px-4 py-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">विशेषताएं जो आपको पसंद आएंगी</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Feature 1: Multiple Voices -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                        <div class="text-blue-500 mb-4">
+                            <!-- Icon for Multiple Voices -->
+                            <svg class="h-12 w-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l-3-3m0 0l-3 3m3-3v10a3 3 0 003 3h4a3 3 0 003-3v-5m-11 5a3 3 0 013-3h4a3 3 0 013 3m-4 5h-1a3 3 0 00-3 3v2a3 3 0 003 3h1m-10-8a3 3 0 013 3v2a3 3 0 01-3 3H3a3 3 0 01-3-3v-2a3 3 0 013-3h1zm10 0a3 3 0 013 3v2a3 3 0 01-3 3h-1a3 3 0 01-3-3v-2a3 3 0 013-3h1z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">अनेक भाषाएँ और आवाजें</h3>
+                        <p class="text-gray-600">विभिन्न एक्सेंट (accents) और शैलियों (styles) में 50 से अधिक आवाजों में से चुनें, और 20 से अधिक भाषाओं का समर्थन करें।</p>
+                    </div>
+                    <!-- Feature 2: Voice Cloning -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                        <div class="text-blue-500 mb-4">
+                            <!-- Icon for Voice Cloning -->
+                            <svg class="h-12 w-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18.5V21a1 1 0 001 1h1a1 1 0 001-1v-2.5a5 5 0 00-5-5zM12 5.5V3a1 1 0 00-1-1H9a1 1 0 00-1 1v2.5a5 5 0 005 5zM19 12a7 7 0 10-14 0 7 7 0 0014 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">अपनी आवाज क्लोन करें</h3>
+                        <p class="text-gray-600">अपनी खुद की आवाज को क्लोन करें और अपनी स्क्रिप्ट को उसी में जनरेट करें।</p>
+                    </div>
+                    <!-- Feature 3: Studio Quality -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                        <div class="text-blue-500 mb-4">
+                            <!-- Icon for Studio Quality -->
+                            <svg class="h-12 w-12 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">स्टूडियो-क्वालिटी ऑडियो</h3>
+                        <p class="text-gray-600">उन्नत AI मॉडल का उपयोग करके स्टूडियो-क्वालिटी वाले वॉइसओवर जनरेट करें।</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Studio Section -->
+        <section id="studio-page" class="page-section">
+            <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-2xl text-center mx-auto">
+                <!-- App ka heading aur description -->
+                <h1 class="text-3xl font-bold text-gray-800 mb-2">एडवांस्ड वॉइसओवर स्टूडियो</h1>
+                <p class="text-gray-600 mb-6">अपनी स्क्रिप्ट पेस्ट करें, आवाज चुनें, और जनरेट करें।</p>
+
+                <!-- Mode selection tabs -->
+                <div class="flex justify-center mb-6 space-x-2">
+                    <button id="single-speaker-tab" class="px-6 py-2 rounded-t-lg font-semibold text-gray-700 border-b-2 border-blue-500 transition-colors">
+                        सिंगल स्पीकर
+                    </button>
+                    <button id="multi-speaker-tab" class="px-6 py-2 rounded-t-lg font-semibold text-gray-500 border-b-2 border-transparent hover:border-gray-300 transition-colors">
+                        मल्टी-स्पीकर
+                    </button>
+                    <button id="voice-lab-tab" class="px-6 py-2 rounded-t-lg font-semibold text-gray-500 border-b-2 border-transparent hover:border-gray-300 transition-colors">
+                        वॉइस लैब (Voice Lab)
+                    </button>
+                </div>
+
+                <!-- Main content area -->
+                <div id="content-area">
+
+                    <!-- Single Speaker Mode -->
+                    <div id="single-speaker-mode">
+                        <textarea id="script-text" rows="8" placeholder="अपनी स्क्रिप्ट यहां लिखें..."
+                            class="w-full p-4 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"></textarea>
+                        
+                        <div class="flex flex-col md:flex-row md:space-x-4">
+                            <!-- Language & Voice selection -->
+                            <div class="mb-4 w-full text-left">
+                                <label for="language-select" class="block text-gray-700 font-semibold mb-2">भाषा चुनें:</label>
+                                <select id="language-select" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors">
+                                    <option value="hi-IN">हिन्दी</option>
+                                    <option value="en-US">English</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-4 w-full text-left">
+                                <label for="voice-select" class="block text-gray-700 font-semibold mb-2">आवाज चुनें:</label>
+                                <select id="voice-select"
+                                    class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors">
+                                    <!-- Options will be populated by JS -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Advanced voice settings -->
+                        <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="text-left">
+                                <label for="stability-range" class="block text-gray-700 font-semibold mb-2">स्टेबिलिटी (Stability) (%): <span id="stability-value">50</span></label>
+                                <input type="range" id="stability-range" min="0" max="100" value="50" class="w-full accent-blue-500">
+                            </div>
+                            <div class="text-left">
+                                <label for="clarity-range" class="block text-gray-700 font-semibold mb-2">क्लैरिटी (Clarity) (%): <span id="clarity-value">50</span></label>
+                                <input type="range" id="clarity-range" min="0" max="100" value="50" class="w-full accent-blue-500">
+                            </div>
+                            <div class="text-left">
+                                <label for="pitch-range" class="block text-gray-700 font-semibold mb-2">पिच (Pitch) (%): <span id="pitch-value">100</span></label>
+                                <input type="range" id="pitch-range" min="50" max="150" value="100" class="w-full accent-blue-500">
+                            </div>
+                        </div>
+                         <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="text-left">
+                                <label for="style-prompt" class="block text-gray-700 font-semibold mb-2">आवाज की शैली (Style):</label>
+                                <input type="text" id="style-prompt" placeholder="उदाहरण: Say it in a cheerful tone"
+                                       class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors">
+                            </div>
+                            <div class="text-left">
+                                <label for="speed-range" class="block text-gray-700 font-semibold mb-2">स्पीड (Speed) (%): <span id="speed-value">100</span></label>
+                                <input type="range" id="speed-range" min="70" max="130" value="100" class="w-full">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Multi-Speaker Mode -->
+                    <div id="multi-speaker-mode" style="display: none;">
+                        <textarea id="conversation-text" rows="8" placeholder="दो वक्ताओं (speakers) के साथ अपनी बातचीत (conversation) यहां लिखें।
+
+उदाहरण:
+राम: नमस्ते! आप कैसे हैं?
+सीता: मैं ठीक हूँ, धन्यवाद! आप कैसे हैं?
+"
+                            class="w-full p-4 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors"></textarea>
+                        
+                        <p class="text-sm text-gray-500 mb-6 text-left">प्रत्येक स्पीकर के नाम के बाद एक कोलन (:) का उपयोग करें।</p>
+                        <div class="mb-4 w-full text-left">
+                            <label class="block text-gray-700 font-semibold mb-2">वक्ताओं के लिए आवाजें चुनें:</label>
+                            <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                                <div class="w-full md:w-1/2">
+                                    <label for="speaker1-voice" class="block text-gray-700 text-sm mb-1">पहला वक्ता:</label>
+                                    <select id="speaker1-voice" class="w-full p-2 border border-gray-300 rounded-lg">
+                                        <option value="Kore">Kore</option>
+                                        <option value="Puck">Puck</option>
+                                        <option value="Zephyr">Zephyr</option>
+                                        <option value="Charon">Charon</option>
+                                    </select>
+                                </div>
+                                <div class="w-full md:w-1/2">
+                                    <label for="speaker2-voice" class="block text-gray-700 text-sm mb-1">दूसरा वक्ता:</label>
+                                    <select id="speaker2-voice" class="w-full p-2 border border-gray-300 rounded-lg">
+                                        <option value="Puck">Puck</option>
+                                        <option value="Zephyr">Zephyr</option>
+                                        <option value="Charon">Charon</option>
+                                        <option value="Kore">Kore</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Voice Lab Mode -->
+                    <div id="voice-lab-mode" style="display: none;">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">वॉइस लैब (Voice Lab)</h2>
+                        <p class="text-gray-600 mb-6">यहाँ आप अपनी खुद की आवाज क्लोन कर सकते हैं या नई आवाजें बना सकते हैं।</p>
+
+                        <!-- Voice Cloning Section -->
+                        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 mb-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-3">आवाज क्लोन करें (Clone Your Voice)</h3>
+                            <p class="text-gray-500 text-sm mb-4">यह एक डेमो फीचर है। **असली क्लोनिंग के लिए एक बैकएंड सिस्टम और एक डेटाबेस की ज़रूरत होती है।** यह इस वेबसाइट में कार्यात्मक (functional) नहीं है।</p>
+                            <div class="flex items-center justify-center space-x-4">
+                                <input type="file" id="voice-upload" accept="audio/*" class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+                                <button id="add-voice-btn" class="bg-gray-300 text-gray-800 px-6 py-2 rounded-full font-semibold hover:bg-gray-400 transition-colors">
+                                    आवाज जोड़ें
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Voice Design Section -->
+                        <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-3">नई आवाज बनाएं (Create New Voice)</h3>
+                            <p class="text-gray-500 text-sm mb-4">यह एक डेमो फीचर है। **नई आवाज बनाने के लिए एक एडवांस AI मॉडल की ज़रूरत होती है।** यह इस वेबसाइट में कार्यात्मक (functional) नहीं है।</p>
+                            <button id="design-voice-btn" class="bg-gray-300 text-gray-800 px-6 py-2 rounded-full font-semibold hover:bg-gray-400 transition-colors">
+                                आवाज डिजाइन करें
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Generate button -->
+                    <button id="generate-btn"
+                        class="bg-blue-500 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-600 transition-colors shadow-md disabled:bg-gray-400 disabled:cursor-not-allowed mt-6">
+                        वॉइसओवर जनरेट करें
+                    </button>
+
+                    <!-- Status and error messages -->
+                    <div id="message-box" class="mt-4 p-4 rounded-lg text-sm" style="display: none;"></div>
+
+                    <!-- Audio player and download link -->
+                    <div id="audio-container" class="mt-8" style="display: none;">
+                        <h2 class="text-xl font-bold text-gray-800 mb-4">आपकी वॉइसओवर</h2>
+                        <audio id="audio-player" class="w-full mb-4" controls></audio>
+                        <!-- Download link -->
+                        <a id="download-link" href="#" download="my-voiceover.wav"
+                        class="bg-green-500 text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-green-600 transition-colors shadow-md">
+                            डाउनलोड करें
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about-page" class="page-section bg-white p-8 rounded-xl shadow-lg w-full max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">हमारा मिशन (Our Mission)</h2>
+            <p class="text-gray-600 mb-6">
+                हम AI-Voice.in में, मानते हैं कि रचनात्मकता (creativity) की कोई सीमा नहीं होनी चाहिए। हमारा मिशन हर किसी के लिए, चाहे वे कलाकार हों, शिक्षक हों, या छोटे बिज़नेस के मालिक हों, AI की शक्ति से पेशेवर वॉइसओवर बनाना आसान और सुलभ (accessible) बनाना है।
+            </p>
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">हमारा इतिहास</h2>
+            <p class="text-gray-600 mb-6">
+                इस प्लेटफॉर्म की शुरुआत एक साधारण विचार से हुई थी: वॉइसओवर बनाने की पारंपरिक प्रक्रिया बहुत महंगी और समय लेने वाली है। AI के उदय के साथ, हमने एक ऐसा समाधान बनाने का निर्णय लिया जो उच्च गुणवत्ता वाले ऑडियो को जनरेट करने के लिए अत्याधुनिक तकनीक (cutting-edge technology) का उपयोग करता है, जिससे समय और लागत दोनों की बचत होती है। हमारा सफर इनोवेशन और यूज़र-फीडबैक से प्रेरित है।
+            </p>
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">हमारी टीम</h2>
+            <p class="text-gray-600 mb-6">
+                हमारा मानना है कि एक टीम के रूप में, हम आपके लिए सर्वश्रेष्ठ AI वॉइस अनुभव लाने के लिए समर्पित हैं।
+            </p>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog-page" class="page-section bg-white p-8 rounded-xl shadow-lg w-full max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">हमारा ब्लॉग (Our Blog)</h2>
+            <p class="text-gray-600 mb-8 text-center">एआई वॉइसओवर की दुनिया में नवीनतम ट्रेंड्स, टिप्स, और गाइड।</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog Post 1 -->
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-200 shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">5 तरीके जिनसे AI वॉइसओवर आपके बिज़नेस को बदल सकते हैं</h3>
+                    <p class="text-gray-600 text-sm mb-4">जानें कि कैसे छोटे बिज़नेस अपने मार्केटिंग, ट्रेनिंग, और वीडियो कंटेंट के लिए एआई वॉइसओवर का इस्तेमाल करके समय और पैसा बचा सकते हैं।</p>
+                    <a href="#" class="text-blue-600 font-semibold hover:underline">और पढ़ें</a>
+                </div>
+                <!-- Blog Post 2 -->
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-200 shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">अपना पहला AI वॉइसओवर कैसे जनरेट करें: एक स्टेप-बाय-स्टेप गाइड</h3>
+                    <p class="text-gray-600 text-sm mb-4">इस आसान गाइड से सीखें कि कैसे हमारे स्टूडियो का उपयोग करके अपनी स्क्रिप्ट को मिनटों में प्रोफेशनल ऑडियो में बदलें।</p>
+                    <a href="#" class="text-blue-600 font-semibold hover:underline">और पढ़ें</a>
+                </div>
+                <!-- Blog Post 3 -->
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-200 shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">क्या AI वॉइस इंसानी आवाज की जगह ले लेगी? भविष्य की एक झलक</h3>
+                    <p class="text-gray-600 text-sm mb-4">इस चर्चा में जानें कि AI और इंसान एक साथ कैसे काम कर सकते हैं और वॉइसओवर इंडस्ट्री का भविष्य कैसा होगा।</p>
+                    <a href="#" class="text-blue-600 font-semibold hover:underline">और पढ़ें</a>
+                </div>
+                 <!-- New Blog Post 4 -->
+                <div class="bg-gray-50 p-6 rounded-xl border border-gray-200 shadow-md">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">AI-Voice.in को Google पर नंबर 1 कैसे बनाएं: बैकलिंक्स का महत्व</h3>
+                    <p class="text-gray-600 text-sm mb-4">बैकलिंक्स क्या हैं? वे Google रैंकिंग के लिए क्यों महत्वपूर्ण हैं? जानें कि कैसे आप अपनी वेबसाइट के लिए प्रभावी बैकलिंक्स बना सकते हैं।</p>
+                    <a href="#" class="text-blue-600 font-semibold hover:underline">और पढ़ें</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Terms of Service Page -->
+        <section id="terms-of-service-page" class="page-section bg-white p-8 rounded-xl shadow-lg w-full max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">सेवा की शर्तें (Terms of Service)</h2>
+            <p class="text-gray-600 mb-6 italic">यह एक नमूना दस्तावेज़ है और इसे कानूनी सलाह नहीं माना जाना चाहिए। कृपया किसी कानूनी पेशेवर से सलाह लें।</p>
+            
+            <div class="prose max-w-none text-gray-600">
+                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">1. सेवाओं का उपयोग (Use of Services)</h3>
+                <p>हमारी सेवाओं का उपयोग करके, आप इन शर्तों से सहमत होते हैं। हमारी सेवाएँ केवल व्यक्तिगत और गैर-वाणिज्यिक उपयोग के लिए हैं, जब तक कि हमारे साथ लिखित समझौता न हो।</p>
+
+                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">2. उपयोगकर्ता की जिम्मेदारियाँ (User Responsibilities)</h3>
+                <p>आप अपनी स्क्रिप्ट और जनरेट की गई ऑडियो सामग्री के लिए पूरी तरह से जिम्मेदार हैं। आप किसी भी अवैध, मानहानिकारक, या कॉपीराइट-उल्लंघन करने वाली सामग्री को जनरेट करने के लिए हमारी सेवाओं का उपयोग नहीं करेंगे।</p>
+
+                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">3. कॉपीराइट और बौद्धिक संपदा (Copyright and Intellectual Property)</h3>
+                <p>आप अपनी स्क्रिप्ट के कॉपीराइट के मालिक बने रहते हैं। जनरेट की गई ऑडियो सामग्री आपके उपयोग के लिए उपलब्ध है। हालाँकि, हमारी वेबसाइट का डिज़ाइन, कोड, और लोगो हमारी संपत्ति हैं और इनका उपयोग हमारी अनुमति के बिना नहीं किया जा सकता है।</p>
+
+                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">4. सीमाएं और अस्वीकरण (Limitations and Disclaimers)</h3>
+                <p>हमारी सेवा "जैसी है" ("as is") के आधार पर प्रदान की जाती है। हम किसी भी क्षति या हानि के लिए जिम्मेदार नहीं हैं जो सेवा के उपयोग से उत्पन्न हो सकती है। हम सेवा की निरंतर उपलब्धता की गारंटी नहीं देते हैं।</p>
+
+                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">5. समाप्ति (Termination)</h3>
+                <p>हमें इन शर्तों का उल्लंघन करने पर किसी भी उपयोगकर्ता की पहुँच को समाप्त करने का अधिकार है।</p>
+            </div>
+        </section>
+
+        <!-- Privacy Policy Page -->
+        <section id="privacy-policy-page" class="page-section bg-white p-8 rounded-xl shadow-lg w-full max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">गोपनीयता नीति (Privacy Policy)</h2>
+            <p class="text-gray-600 mb-6 italic">यह एक नमूना दस्तावेज़ है और इसे कानूनी सलाह नहीं माना जाना चाहिए। कृपया किसी कानूनी पेशेवर से सलाह लें।</p>
+            
+            <div class="prose max-w-none text-gray-600">
+                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">1. जानकारी जो हम एकत्र करते हैं (Information We Collect)</h3>
+                <p>फिलहाल, हमारी वेबसाइट कोई व्यक्तिगत जानकारी एकत्र नहीं करती है। जब आप हमारी सेवाओं का उपयोग करते हैं, तो हम स्वचालित रूप से कुछ गैर-पहचान योग्य जानकारी (जैसे आपका ब्राउज़र टाइप और आईपी एड्रेस) एकत्र कर सकते हैं।</p>
+                <p>यदि हम भविष्य में साइन अप या भुगतान जैसी सुविधाएँ जोड़ते हैं, तो हम आपका ईमेल पता जैसी व्यक्तिगत जानकारी एकत्र कर सकते हैं। यह नीति तब अपडेट की जाएगी।</p>
+
+                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">2. जानकारी का उपयोग (How We Use Information)</h3>
+                <p>हम एकत्र की गई जानकारी का उपयोग अपनी सेवाओं को प्रदान करने, उन्हें बेहतर बनाने और आपकी जरूरतों को पूरा करने के लिए करते हैं। गैर-व्यक्तिगत जानकारी का उपयोग वेबसाइट के प्रदर्शन और उपयोग का विश्लेषण करने के लिए किया जाता है।</p>
+
+                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">3. जानकारी का साझाकरण (Information Sharing)</h3>
+                <p>हम आपकी जानकारी किसी भी तृतीय-पक्ष के साथ साझा नहीं करते हैं, सिवाय इसके कि जहाँ कानून द्वारा आवश्यक हो या हमारी सेवाओं को प्रदान करने के लिए ज़रूरी हो (जैसे कि AI API प्रदाता)।</p>
+
+                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">4. विज्ञापन (Advertising)</h3>
+                <p>यह वेबसाइट Google AdSense जैसे तीसरे पक्ष के विज्ञापनदाताओं का उपयोग कर सकती है। ये विज्ञापनदाता आपकी रुचि के आधार पर विज्ञापन देने के लिए कुकीज़ का उपयोग कर सकते हैं।</p>
+
+                <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-2">5. आपकी पसंद (Your Choices)</h3>
+                <p>आप अपने ब्राउज़र की सेटिंग में कुकीज़ को अक्षम (disable) कर सकते हैं। ऐसा करने से वेबसाइट के कुछ हिस्से ठीक से काम नहीं कर सकते हैं।</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- AdSense Ad Slot (Bottom) -->
+    <!-- Adsense approval ke baad, aap is div ke andar ad code paste kar sakte hain. -->
+    <div class="w-full bg-white p-4 text-center text-gray-500 text-sm border-t border-gray-200" style="min-height: 80px;">
+        <p>विज्ञापन (Advertisement)</p>
+        <!-- AdSense Ad Code here -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-8 px-6 md:px-12 text-center text-gray-400 rounded-t-xl shadow-inner mt-10">
+        <p class="mb-4">&copy; 2024 AI-Voice.in। सभी अधिकार सुरक्षित।</p>
+        <div class="space-x-4">
+            <button id="footer-terms-btn" class="hover:text-white transition-colors">सेवा की शर्तें (Terms of Service)</button>
+            <span class="text-gray-600">|</span>
+            <button id="footer-privacy-btn" class="hover:text-white transition-colors">गोपनीयता नीति (Privacy Policy)</button>
+        </div>
+    </footer>
+
+    <script>
+        // DOM elements ko select karein
+        const landingPage = document.getElementById('landing-page');
+        const studioPage = document.getElementById('studio-page');
+        const aboutPage = document.getElementById('about-page');
+        const blogPage = document.getElementById('blog-page');
+        const termsPage = document.getElementById('terms-of-service-page');
+        const privacyPage = document.getElementById('privacy-policy-page');
+        const faqPage = document.getElementById('faq-page');
+        const navHome = document.getElementById('nav-home');
+        const navStudio = document.getElementById('nav-studio');
+        const navAbout = document.getElementById('nav-about');
+        const navBlog = document.getElementById('nav-blog');
+        const navFaq = document.getElementById('nav-faq');
+        const getStartedBtn = document.getElementById('get-started-btn');
+        const singleSpeakerTab = document.getElementById('single-speaker-tab');
+        const multiSpeakerTab = document.getElementById('multi-speaker-tab');
+        const voiceLabTab = document.getElementById('voice-lab-tab');
+        const singleSpeakerMode = document.getElementById('single-speaker-mode');
+        const multiSpeakerMode = document.getElementById('multi-speaker-mode');
+        const voiceLabMode = document.getElementById('voice-lab-mode');
+        const scriptTextarea = document.getElementById('script-text');
+        const conversationTextarea = document.getElementById('conversation-text');
+        const languageSelect = document.getElementById('language-select');
+        const voiceSelect = document.getElementById('voice-select');
+        const stylePromptInput = document.getElementById('style-prompt');
+        const speedRange = document.getElementById('speed-range');
+        const speedValueSpan = document.getElementById('speed-value');
+        const stabilityRange = document.getElementById('stability-range');
+        const stabilityValueSpan = document.getElementById('stability-value');
+        const clarityRange = document.getElementById('clarity-range');
+        const clarityValueSpan = document.getElementById('clarity-value');
+        const pitchRange = document.getElementById('pitch-range');
+        const pitchValueSpan = document.getElementById('pitch-value');
+        const speaker1VoiceSelect = document.getElementById('speaker1-voice');
+        const speaker2VoiceSelect = document.getElementById('speaker2-voice');
+        const generateBtn = document.getElementById('generate-btn');
+        const messageBox = document.getElementById('message-box');
+        const audioContainer = document.getElementById('audio-container');
+        const audioPlayer = document.getElementById('audio-player');
+        const downloadLink = document.getElementById('download-link');
+        const addVoiceBtn = document.getElementById('add-voice-btn');
+        const designVoiceBtn = document.getElementById('design-voice-btn');
+        const loginBtn = document.getElementById('login-btn');
+        const signupBtn = document.getElementById('signup-btn');
+        const footerTermsBtn = document.getElementById('footer-terms-btn');
+        const footerPrivacyBtn = document.getElementById('footer-privacy-btn');
+        const headerLogo = document.getElementById('header-logo');
+
+        let currentMode = 'single';
+
+        // Voices list with more options and gender categorization
+        const voices = {
+            'hi-IN': [
+                { value: 'Puck', label: 'Puck (उत्साहित)', gender: 'Male' },
+                { value: 'Zephyr', label: 'Zephyr (चमकीली)', gender: 'Male' },
+                { value: 'Rasalgethi', label: 'Rasalgethi (जानकारीपूर्ण)', gender: 'Male' },
+                { value: 'Algieba', label: 'Algieba (ग्रेवली)', gender: 'Male' },
+                { value: 'Orus', label: 'Orus (फर्म)', gender: 'Male' },
+                { value: 'Algenib', label: 'Algenib (ग्रेवली)', gender: 'Male' },
+                { value: 'Zubenelgenubi', label: 'Zubenelgenubi (कैज़ुअल)', gender: 'Male' },
+                { value: 'Sadaltager', label: 'Sadaltager (नॉलेजेबल)', gender: 'Male' },
+                { value: 'Achird', label: 'Achird (दोस्ताना)', gender: 'Male' },
+                { value: 'Iapetus', label: 'Iapetus (साफ)', gender: 'Male' },
+                { value: 'Kore', label: 'Kore (फर्म)', gender: 'Female' },
+                { value: 'Charon', label: 'Charon (जानकारीपूर्ण)', gender: 'Female' },
+                { value: 'Erinome', label: 'Erinome (साफ)', gender: 'Female' },
+                { value: 'Laomedeia', label: 'Laomedeia (उत्साहित)', gender: 'Female' },
+                { value: 'Leda', label: 'Leda (युवा)', gender: 'Female' },
+                { value: 'Aoede', label: 'Aoede (हल्की-फुल्की)', gender: 'Female' },
+                { value: 'Umbriel', label: 'Umbriel (इजी-गोइंग)', gender: 'Female' },
+                { value: 'Despina', label: 'Despina (स्मूथ)', gender: 'Female' },
+                { value: 'Vindemiatrix', label: 'Vindemiatrix (सज्जन)', gender: 'Female' },
+                { value: 'Sadachbia', label: 'Sadachbia (लवली)', gender: 'Female' },
+            ],
+            'en-US': [
+                { value: 'Puck', label: 'Puck (Upbeat)', gender: 'Male' },
+                { value: 'Zephyr', label: 'Zephyr (Bright)', gender: 'Male' },
+                { value: 'Fenrir', label: 'Fenrir (Excitable)', gender: 'Male' },
+                { value: 'Orus', label: 'Orus (Firm)', gender: 'Male' },
+                { value: 'Algenib', label: 'Algenib (Gravelly)', gender: 'Male' },
+                { value: 'Rasalgethi', label: 'Rasalgethi (Informative)', gender: 'Male' },
+                { value: 'Sadaltager', label: 'Sadaltager (Knowledgeable)', gender: 'Male' },
+                { value: 'Achird', label: 'Achird (Friendly)', gender: 'Male' },
+                { value: 'Zubenelgenubi', label: 'Zubenelgenubi (Casual)', gender: 'Male' },
+                { value: 'Iapetus', label: 'Iapetus (Clear)', gender: 'Male' },
+                { value: 'Kore', label: 'Kore (Firm)', gender: 'Female' },
+                { value: 'Charon', label: 'Charon (Informative)', gender: 'Female' },
+                { value: 'Leda', label: 'Leda (Youthful)', gender: 'Female' },
+                { value: 'Aoede', label: 'Aoede (Breezy)', gender: 'Female' },
+                { value: 'Erinome', label: 'Erinome (Clear)', gender: 'Female' },
+                { value: 'Despina', label: 'Despina (Smooth)', gender: 'Female' },
+                { value: 'Umbriel', label: 'Umbriel (Easy-going)', gender: 'Female' },
+                { value: 'Vindemiatrix', label: 'Vindemiatrix (Gentle)', gender: 'Female' },
+                { value: 'Sadachbia', label: 'Sadachbia (Lively)', gender: 'Female' },
+                { value: 'Laomedeia', label: 'Laomedeia (Upbeat)', gender: 'Female' },
+            ]
+        };
+
+        // Show a specific page section
+        const showPage = (pageId) => {
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(pageId).style.display = 'block';
+        };
+
+        // Update the slider value display
+        speedRange.addEventListener('input', () => {
+            speedValueSpan.textContent = speedRange.value;
+        });
+        stabilityRange.addEventListener('input', () => {
+            stabilityValueSpan.textContent = stabilityRange.value;
+            displayMessage('यह एक डेमो फीचर है। Stability, Clarity और Pitch को काम करने के लिए एडवांस AI मॉडल API की ज़रूरत होती है।', 'info');
+        });
+        clarityRange.addEventListener('input', () => {
+            clarityValueSpan.textContent = clarityRange.value;
+            displayMessage('यह एक डेमो फीचर है। Stability, Clarity और Pitch को काम करने के लिए एडवांस AI मॉडल API की ज़रूरत होती है।', 'info');
+        });
+        pitchRange.addEventListener('input', () => {
+            pitchValueSpan.textContent = pitchRange.value;
+            displayMessage('यह एक डेमो फीचर है। Stability, Clarity और Pitch को काम करने के लिए एडवांस AI मॉडल API की ज़रूरत होती है।', 'info');
+        });
+
+        // Voice options ko dynamically populate karein
+        const updateVoiceOptions = () => {
+            const lang = languageSelect.value;
+            const voiceOptions = voices[lang];
+            voiceSelect.innerHTML = '';
+            
+            const maleVoices = voiceOptions.filter(v => v.gender === 'Male');
+            const femaleVoices = voiceOptions.filter(v => v.gender === 'Female');
+
+            if (maleVoices.length > 0) {
+                const maleGroup = document.createElement('optgroup');
+                maleGroup.label = 'पुरुष (Male)';
+                maleVoices.forEach(voice => {
+                    const option = document.createElement('option');
+                    option.value = voice.value;
+                    option.textContent = voice.label;
+                    maleGroup.appendChild(option);
+                });
+                voiceSelect.appendChild(maleGroup);
+            }
+
+            if (femaleVoices.length > 0) {
+                const femaleGroup = document.createElement('optgroup');
+                femaleGroup.label = 'महिला (Female)';
+                femaleVoices.forEach(voice => {
+                    const option = document.createElement('option');
+                    option.value = voice.value;
+                    option.textContent = voice.label;
+                    femaleGroup.appendChild(option);
+                });
+                voiceSelect.appendChild(femaleGroup);
+            }
+        };
+
+        // Tab switching logic
+        const tabs = {
+            'single-speaker-tab': { mode: 'single', elem: singleSpeakerMode },
+            'multi-speaker-tab': { mode: 'multi', elem: multiSpeakerMode },
+            'voice-lab-tab': { mode: 'voice-lab', elem: voiceLabMode }
+        };
+
+        document.querySelectorAll('button[id$="-tab"]').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active classes from all tabs
+                document.querySelectorAll('button[id$="-tab"]').forEach(t => {
+                    t.classList.remove('border-blue-500', 'text-gray-700');
+                    t.classList.add('border-transparent', 'hover:border-gray-300', 'text-gray-500');
+                });
+                
+                // Set active class on the clicked tab
+                tab.classList.remove('border-transparent', 'hover:border-gray-300', 'text-gray-500');
+                tab.classList.add('border-blue-500', 'text-gray-700');
+
+                // Hide all content modes
+                Object.values(tabs).forEach(t => t.elem.style.display = 'none');
+                
+                // Show the selected mode's content
+                const selectedTab = tabs[tab.id];
+                selectedTab.elem.style.display = 'block';
+                currentMode = selectedTab.mode;
+            });
+        });
+
+        // Navigation
+        navHome.addEventListener('click', () => showPage('landing-page'));
+        navStudio.addEventListener('click', () => showPage('studio-page'));
+        navAbout.addEventListener('click', () => showPage('about-page'));
+        navBlog.addEventListener('click', () => showPage('blog-page'));
+        navFaq.addEventListener('click', () => showPage('faq-page'));
+        footerTermsBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPage('terms-of-service-page');
+        });
+        footerPrivacyBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPage('privacy-policy-page');
+        });
+        getStartedBtn.addEventListener('click', () => showPage('studio-page'));
+        headerLogo.addEventListener('click', () => showPage('landing-page'));
+        window.addEventListener('load', () => showPage('landing-page'));
+        languageSelect.addEventListener('change', updateVoiceOptions);
+        window.addEventListener('load', updateVoiceOptions);
+
+
+        // PCM data ko WAV format mein convert karne ka function
+        const pcmToWav = (pcmData, sampleRate) => {
+            const numChannels = 1;
+            const bitsPerSample = 16;
+            const byteRate = sampleRate * numChannels * bitsPerSample / 8;
+            const blockAlign = numChannels * bitsPerSample / 8;
+
+            const buffer = new ArrayBuffer(44 + pcmData.byteLength);
+            const view = new DataView(buffer);
+
+            // RIFF chunk descriptor
+            writeString(view, 0, 'RIFF'); // ChunkID
+            view.setUint32(4, 36 + pcmData.byteLength, true); // ChunkSize
+            writeString(view, 8, 'WAVE'); // Format
+
+            // fmt sub-chunk
+            writeString(view, 12, 'fmt '); // Subchunk1ID
+            view.setUint32(16, 16, true); // Subchunk1Size
+            view.setUint16(20, 1, true); // AudioFormat (1 = PCM)
+            view.setUint16(22, numChannels, true); // NumChannels
+            view.setUint32(24, sampleRate, true); // SampleRate
+            view.setUint32(28, byteRate, true); // ByteRate
+            view.setUint16(32, blockAlign, true); // BlockAlign
+            view.setUint16(34, bitsPerSample, true); // BitsPerSample
+
+            // data sub-chunk
+            writeString(view, 36, 'data'); // Subchunk2ID
+            view.setUint32(40, pcmData.byteLength, true); // Subchunk2Size
+
+            // PCM data ko buffer mein copy karein
+            const pcm16 = new Int16Array(pcmData);
+            for (let i = 0; i < pcm16.length; i++) {
+                view.setInt16(44 + i * 2, pcm16[i], true);
+            }
+
+            return new Blob([view], { type: 'audio/wav' });
+        };
+
+        // String ko DataView mein likhne ka helper function
+        const writeString = (view, offset, string) => {
+            for (let i = 0; i < string.length; i++) {
+                view.setUint8(offset + i, string.charCodeAt(i));
+            }
+        };
+
+        const displayMessage = (message, type = 'info') => {
+            messageBox.textContent = message;
+            messageBox.style.display = 'block';
+            if (type === 'error') {
+                messageBox.classList.remove('bg-gray-200', 'text-gray-700', 'bg-green-200', 'text-green-700');
+                messageBox.classList.add('bg-red-200', 'text-red-700');
+            } else if (type === 'success') {
+                messageBox.classList.remove('bg-gray-200', 'text-gray-700', 'bg-red-200', 'text-red-700');
+                messageBox.classList.add('bg-green-200', 'text-green-700');
+            } else {
+                messageBox.classList.remove('bg-red-200', 'text-red-700', 'bg-green-200', 'text-green-700');
+                messageBox.classList.add('bg-gray-200', 'text-gray-700');
+            }
+        };
+
+        // Generate button par click hone par
+        generateBtn.addEventListener('click', async () => {
+            let script, payload;
+            
+            // UI states ko update karein
+            generateBtn.disabled = true;
+            displayMessage('जनरेट हो रहा है... कृपया प्रतीक्षा करें।', 'info');
+            audioContainer.style.display = 'none';
+
+            if (currentMode === 'single') {
+                script = scriptTextarea.value.trim();
+                const stylePrompt = stylePromptInput.value.trim();
+                const speed = (speedRange.value / 100);
+
+                if (!script) {
+                    displayMessage('कृपया जनरेट करने के लिए कुछ टेक्स्ट लिखें।', 'error');
+                    generateBtn.disabled = false;
+                    return;
+                }
+                
+                let textToGenerate = script;
+                if (stylePrompt) {
+                    textToGenerate = `${stylePrompt}: ${script}`;
+                }
+
+                // Pauses ko handle karein
+                textToGenerate = textToGenerate.replace(/<break time="(\d+\.?\d*?)(s|ms)"\/>/g, (match, p1, p2) => {
+                    const timeInMs = (p2 === 's') ? parseFloat(p1) * 1000 : parseInt(p1, 10);
+                    // Yahan hum sirf demo ke liye SSML tags ko text mein convert kar rahe hain
+                    // Asli API call mein SSML tags sidhe bhej diye jaate hain.
+                    return ` [${timeInMs}ms pause] `;
+                });
+
+
+                payload = {
+                    contents: [{
+                        parts: [{ text: textToGenerate }]
+                    }],
+                    generationConfig: {
+                        responseModalities: ["AUDIO"],
+                        speechConfig: {
+                            voiceConfig: {
+                                prebuiltVoiceConfig: { voiceName: voiceSelect.value }
+                            }
+                        }
+                    },
+                    model: "gemini-2.5-flash-preview-tts"
+                };
+
+            } else if (currentMode === 'multi') { // Multi-speaker mode
+                script = conversationTextarea.value.trim();
+                if (!script) {
+                    displayMessage('कृपया बातचीत (conversation) के लिए कुछ टेक्स्ट लिखें।', 'error');
+                    generateBtn.disabled = false;
+                    return;
+                }
+                
+                payload = {
+                    contents: [{
+                        parts: [{ text: script }]
+                    }],
+                    generationConfig: {
+                        responseModalities: ["AUDIO"],
+                        speechConfig: {
+                            multiSpeakerVoiceConfig: {
+                                speakerVoiceConfigs: [
+                                    { speaker: "राम", voiceConfig: { prebuiltVoiceConfig: { voiceName: speaker1VoiceSelect.value } } },
+                                    { speaker: "सीता", voiceConfig: { prebuiltVoiceConfig: { voiceName: speaker2VoiceSelect.value } } }
+                                ]
+                            }
+                        }
+                    }
+                };
+            } else { // Voice Lab mode is for demo purposes only
+                 displayMessage('यह एक डेमो फीचर है। असली क्लोनिंग के लिए एक बैकएंड सिस्टम की ज़रूरत होती है।', 'error');
+                 generateBtn.disabled = false;
+                 return;
+            }
+
+            const apiKey = ""; // API key will be provided at runtime
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-tts:generateContent?key=${apiKey}`;
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error.message || `HTTP error! Status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                const part = result?.candidates?.[0]?.content?.parts?.[0];
+                const audioData = part?.inlineData?.data;
+                const mimeType = part?.inlineData?.mimeType;
+
+                if (audioData && mimeType && mimeType.startsWith("audio/L16")) {
+                    const sampleRateMatch = mimeType.match(/rate=(\d+)/);
+                    if (!sampleRateMatch) throw new Error("MIME type mein sample rate nahi mila.");
+
+                    const sampleRate = parseInt(sampleRateMatch[1], 10);
+                    const pcmData = Uint8Array.from(atob(audioData), c => c.charCodeAt(0)).buffer;
+
+                    const wavBlob = pcmToWav(pcmData, sampleRate);
+                    const audioUrl = URL.createObjectURL(wavBlob);
+                    
+                    audioPlayer.src = audioUrl;
+                    audioContainer.style.display = 'block';
+                    downloadLink.href = audioUrl;
+                    displayMessage('वॉइसओवर सफलतापूर्वक जनरेट हो गया!', 'success');
+
+                } else {
+                    console.error("API response does not contain valid audio data.");
+                    throw new Error("वॉइस जनरेट नहीं हो पाई।");
+                }
+
+            } catch (error) {
+                console.error('Audio generation mein error:', error);
+                displayMessage(`वॉइस जनरेट करने में कोई समस्या हुई: ${error.message}`, 'error');
+            } finally {
+                // UI states ko default par wapas layein
+                generateBtn.disabled = false;
+            }
+        });
+
+        // Add event listeners for the new demo buttons
+        addVoiceBtn.addEventListener('click', () => {
+            displayMessage('आवाज जोड़ने के लिए एक बैकएंड सिस्टम की ज़रूरत होती है।', 'error');
+        });
+
+        designVoiceBtn.addEventListener('click', () => {
+            displayMessage('यह एक एडवांस AI मॉडल फीचर है और इसके लिए एक अलग API की ज़रूरत होती है।', 'error');
+        });
+
+        // Add event listeners for login/signup buttons
+        loginBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            displayMessage('लॉगिन फीचर के लिए एक बैकएंड सिस्टम की ज़रूरत होती है। यह एक डेमो लिंक है।', 'info');
+        });
+
+        signupBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            displayMessage('साइन अप फीचर के लिए एक बैकएंड सिस्टम की ज़रूरत होती है। यह एक डेमो लिंक है।', 'info');
+        });
+
+        // FAQ accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('svg');
+                
+                const isOpen = answer.classList.contains('open');
+
+                document.querySelectorAll('.faq-answer.open').forEach(openAnswer => {
+                    openAnswer.classList.remove('open');
+                    openAnswer.previousElementSibling.querySelector('svg').style.transform = 'rotate(0deg)';
+                });
+
+                if (!isOpen) {
+                    answer.classList.add('open');
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
